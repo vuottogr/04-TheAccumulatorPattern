@@ -10,7 +10,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 
 ###############################################################################
 #
-# TODO: 2.
+# done: 2.
 #   RUN this program, then READ its code.
 #     Then answer the following, GETTING HELP AS NEED!  (Ask questions!!!)
 #     Write your answers in any reasonable way (your choice).
@@ -38,13 +38,13 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #     c. If you want a loop that runs from r to s, inclusive, assuming s >= r,
 #          what expression would you use in the _____ below?
 #
-#            for k in range(r - s):
+#            for k in range(r, s):
 #
 #     d. If you want a loop that runs from (r + 4) to (s - 10),
 #          including the (r + 4) but not including the (s - 10),
 #          what expression would you use in the _____ below?
 #
-#            for k in range((r + 5) - (s - 10)):
+#            for k in range((r + 5), (s - 10)):
 #
 #     e. The following code snippet attempts to return the number
 #          of integers from r to s, inclusive, whose cosines are positive.
@@ -56,11 +56,16 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #                      count = 1
 #                  return count
 
-#
+#               count = 0
+#               for k in range(r, s):
+#                   if math.cos(k) > 0:
+#                        count = count +1
+#                   return count
 #
 #     f. The code in the "graphics accumulation" example below includes:
 #            for _ in range(n):
 #        What does the   _   (underscore) mean?
+#           variable for the function within the range
 #
 #     g. The code in the "graphics accumulation" example below includes:
 #
@@ -81,6 +86,7 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher, Mark Hays,
 #                  center = rg.Point(x + (k * diameter), y)
 #                  circle = rg.Circle(point, radius)
 #                  circle.attach_to(window)
+#                       WRONG
 #
 #              x = starting_point.x
 #              for k in range(n):
