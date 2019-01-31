@@ -27,8 +27,8 @@ import rosegraphics as rg
 # -----------------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_draw_squares_from_circle()
-    run_test_draw_circles_from_rectangle()
+ #   run_test_draw_squares_from_circle()
+ #   run_test_draw_circles_from_rectangle()
     run_test_draw_lines_from_rectangles()
 
 
@@ -331,7 +331,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # -------------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # done: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -353,20 +353,34 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     y2 = rectangle1.corner_2.y
     xm = (x2 - x1) / 2
     ym = (y2 - y1) / 2
-    center1 = (rg.Point(xm, ym))
+    center1 = (rg.Point((xm + x1), (ym + y1)))
 
     xn1 = rectangle2.corner_1.x
     xn2 = rectangle2.corner_2.x
-    yn1 = rectangle2.corner_2.y
+    yn1 = rectangle2.corner_1.y
     yn2 = rectangle2.corner_2.y
     xnm = (xn2 - xn1) / 2
     ynm = (yn2 - yn1) / 2
-    center2 = (rg.Point(xnm, ynm))
+    center2 = rg.Point((xnm + xn1), (yn1 + ynm))
 
     line1 = rg.Line(center1, center2)
+    line1.thickness = 5
     line1.attach_to(window)
 
-    
+    for k in range(n):
+        start = rg.Point(center1.x, center1.y)
+        end = rg. Point(center2.x, center2.y)
+        newcenter1 = rg.Point((start.x - abs(k * xm)), (start.y + abs(k * ym)))
+        newcenter2 = rg.Point((end.x - abs(k * xm)), (end.y + abs(k * ym)))
+        newline = rg.Line(newcenter1, newcenter2)
+        newline.thickness = 5
+        if k % 2 != 0:
+            newline.color = rectangle2.outline_color
+        else:
+            newline.color = rectangle1.outline_color
+        newline.attach_to(window)
+
+    window.render(1)
 
 
 # -----------------------------------------------------------------------------
