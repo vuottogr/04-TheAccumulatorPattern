@@ -27,8 +27,8 @@ import rosegraphics as rg
 # -----------------------------------------------------------------------------
 def main():
     """ Calls the   TEST   functions in this module. """
- #   run_test_draw_squares_from_circle()
- #   run_test_draw_circles_from_rectangle()
+    run_test_draw_squares_from_circle()
+    run_test_draw_circles_from_rectangle()
     run_test_draw_lines_from_rectangles()
 
 
@@ -230,6 +230,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
 
     for k in range(1, (m + 1), 1):
         newcircle = rg.Circle(rg.Point(((x1 + d2 / 2) - (k * d2)), (y1 + (d2 / 2))), (d2 / 2))
+        newcircle.fill_color = rectangle.fill_color
         newcircle.attach_to(window)
 
     for k in range(n):
@@ -331,7 +332,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
       :type window: rg.RoseWindow
       """
     # -------------------------------------------------------------------------
-    # done: 5. Implement and test this function.
+    # done9: 5. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
